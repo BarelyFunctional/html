@@ -134,7 +134,7 @@ onSubmit msg =
 
 onSubmitOptions : Options
 onSubmitOptions =
-  { defaultOptions | preventDefault = True }
+  { defaultOptions | preventDefault = Json.succeed True }
 
 
 -- FOCUS EVENTS
@@ -199,8 +199,8 @@ to the event is prevented. For example, this is used with touch events when you
 want to treat them as gestures of your own, not as scrolls.
 -}
 type alias Options =
-    { stopPropagation : Bool
-    , preventDefault : Bool
+    { stopPropagation : Json.Decoder Bool
+    , preventDefault : Json.Decoder Bool
     }
 
 
@@ -214,7 +214,6 @@ type alias Options =
 defaultOptions : Options
 defaultOptions =
   VirtualDom.defaultOptions
-
 
 
 -- COMMON DECODERS
